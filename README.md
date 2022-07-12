@@ -1,1 +1,3 @@
-# java-workshop
+# Java Workshop
+
+[Exercises](exercises/)
