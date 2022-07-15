@@ -6,9 +6,7 @@ import java.io.FileReader;
 public class CSVReader {
 
 	public static void main(String[] args) throws Exception {
-		String inputCSV = "users.csv";
-
-		BufferedReader reader = new BufferedReader(new FileReader(inputCSV));
+		BufferedReader reader = new BufferedReader(new FileReader("users.csv"));
 		
 		String line;
 		
