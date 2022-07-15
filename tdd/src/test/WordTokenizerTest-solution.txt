@@ -1,0 +1,85 @@
+package x.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
+
+import x.WordTokenizer;
+
+class WordTokenizerTest {
+
+//	@Test
+//	void test() {
+//		fail("Not yet implemented");
+//	}
+	
+	@Test
+	void singleSpaceTwoWordsLowerCase() {
+		WordTokenizer tokenizer = new WordTokenizer();
+		String [] words = tokenizer.tokenize("cat dog");
+		assertEquals(2, words.length);
+	}
+	
+	@Test
+	void multipleSpaceLowerCase () {
+		WordTokenizer tokenizer = new WordTokenizer();
+		String [] words = tokenizer.tokenize("cat   dog   parrot");
+		//System.out.println (Arrays.toString(words));
+		assertEquals(3, words.length);
+	}
+	
+	@Test
+	void puctuationsLowerCase () {
+		WordTokenizer tokenizer = new WordTokenizer();
+		String [] words = tokenizer.tokenize("cat,   dog!   parrot.");
+		//System.out.println (Arrays.toString(words));
+		assertEquals(3, words.length);
+		assertEquals("cat", words[0]);
+		assertEquals("dog", words[1]);
+		assertEquals("parrot", words[2]);
+	}
+	
+	@Test
+	void mixedCase () {
+		WordTokenizer tokenizer = new WordTokenizer();
+		String [] words = tokenizer.tokenize("Cat   DOG!   parrot");
+		//System.out.println (Arrays.toString(words));
+		assertEquals(3, words.length);
+		assertEquals("cat", words[0]);
+		assertEquals("dog", words[1]);
+		assertEquals("parrot", words[2]);
+	}
+	
+	@Test
+	void startingWithSpace () {
+		WordTokenizer tokenizer = new WordTokenizer();
+		String [] words = tokenizer.tokenize("  cat  dog");
+		//System.out.println (Arrays.toString(words));
+		assertEquals(2, words.length);
+		assertEquals("cat", words[0]);
+		assertEquals("dog", words[1]);
+	}
+	
+	@Test
+	void startingWithSpaceAndTrailingSpace () {
+		WordTokenizer tokenizer = new WordTokenizer();
+		String [] words = tokenizer.tokenize("  cat  dog   ");
+		//System.out.println (Arrays.toString(words));
+		assertEquals(2, words.length);
+		assertEquals("cat", words[0]);
+		assertEquals("dog", words[1]);
+	}
+	
+	@Test
+	void emptyString () {
+		WordTokenizer tokenizer = new WordTokenizer();
+		String [] words = tokenizer.tokenize("");
+		//System.out.println (Arrays.toString(words));
+		assertEquals(0, words.length);
+	}
+	
+
+
+}

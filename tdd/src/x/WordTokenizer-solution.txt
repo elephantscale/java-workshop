@@ -1,0 +1,29 @@
+package x;
+
+public class WordTokenizer {
+	
+	public String [] tokenize (String sentence) {
+		// v1
+		//String [] words = sentence.split(" ");
+		
+		// v2
+		//String [] words = sentence.split("\\s+");
+		
+		// v3
+		//String [] words = sentence.split("\\W+");
+		
+		// v4
+		//String [] words = sentence.toLowerCase().split("\\W+");
+
+		// v5
+		//String [] words = sentence.strip().toLowerCase().split("\\W+");
+		
+		//v6
+		if (sentence.length() == 0)
+			return new String[0];
+		
+		String [] words = sentence.strip().toLowerCase().split("\\W+");
+		return words;
+	}
+
+}
